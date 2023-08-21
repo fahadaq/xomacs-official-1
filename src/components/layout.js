@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Home from "./home/Home"
 import About from "./about/About"
 import Services from "./services/services"
+import CaseStudies from "./caseStudies/CaseStudies"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -66,6 +67,64 @@ const Layout = ({ children }) => {
                 }
               }
             }
+            
+          }
+          services {
+            ... on WpPage_Pagebuilder_Services_ServiceitemsaboutBg {
+              serviceButton
+              serviceTitle
+              serviceTitle2
+              servicerepeater {
+                servicesInfo {
+                  ... on WpPage_Pagebuilder_Services_ServiceitemsaboutBg_servicerepeater_ServicesInfo_ServiceInfoDetails {
+                    serviceDescription
+                    serviceTitle
+                    serviceLogo {
+                      altText
+                      sourceUrl
+                    }
+                  }
+                }
+              }
+            }
+          }
+          caseStudies {
+            ... on WpPage_Pagebuilder_CaseStudies_CaseStudiesItems {
+              caseStudiesButton
+              caseStudiesTitle
+              caseStudiesBgImage {
+                altText
+                sourceUrl
+              }
+              caseStudiesImagesRepeater {
+                caseStudiesImage {
+                  altText
+                  sourceUrl
+                }
+                caseStudiesImageButton
+                caseStudiesImageDescription
+                caseStudiesImageTitle
+              }
+              caseStudiesNavRepeater {
+                caseStudiesNavbar {
+                  ... on WpPage_Pagebuilder_CaseStudies_CaseStudiesItems_caseStudiesNavRepeater_CaseStudiesNavbar_CaseStudiesNavbarData {
+                    caseStudiesTitle
+                  }
+                }
+              }
+              caseStudiesTitle2
+            }
+          }
+          caseStudiesCount {
+            ... on WpPage_Pagebuilder_CaseStudiesCount_CaseStudiesCountLeft {
+              caseStudiesCount1
+            }
+            ... on WpPage_Pagebuilder_CaseStudiesCount_CaseStudiesCountRight {
+              caseStudiesCount1
+              caseStudiesCount2
+              caseStudiesCount3
+              caseStudiesCount4
+            }
           }
         }
         title
@@ -97,15 +156,28 @@ const Layout = ({ children }) => {
   const {about: aboutData} = about.pageBuilder
 
 
+  // Service's Page Data
+
+  const services = nodes.find(n => n.title === 'Services');
+  const {services: servicesData} = services.pageBuilder
+
+
+  // Case Studies Page Data
+
+  const caseStudies = nodes.find(n => n.title === 'Case Studies');
+  const {caseStudies: caseStudiesData} = caseStudies.pageBuilder
+
+
   return (
     <>
       <div className="relative">
         <Navbar ClrStandard={ClrStandard} NavbarData={NavbarData} />
         <Home homeData={homeData[0]} ClrStandard={ClrStandard}/>
         <About aboutData={aboutData[0]}/>
-        <Services/>
+        <Services servicesData={servicesData[0]} ClrStandard={ClrStandard}/>
+        <CaseStudies caseStudiesData={caseStudiesData[0]}/>
         <main>{children}</main>
-        {console.log('homeData', aboutData[0])}
+        {console.log('caseStudiesData', caseStudiesData[0])}
       </div>
     </>
   )
