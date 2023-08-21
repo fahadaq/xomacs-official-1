@@ -175,7 +175,7 @@ const Layout = ({ children }) => {
         <Home homeData={homeData[0]} ClrStandard={ClrStandard}/>
         <About aboutData={aboutData[0]}/>
         <Services servicesData={servicesData[0]} ClrStandard={ClrStandard}/>
-        <CaseStudies caseStudiesData={caseStudiesData[0]}/>
+        <CaseStudies caseStudiesData={caseStudiesData[0]} ClrStandard={ClrStandard}/>
         <main>{children}</main>
         {console.log('caseStudiesData', caseStudiesData[0])}
       </div>

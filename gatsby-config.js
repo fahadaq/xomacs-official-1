@@ -12,7 +12,7 @@ module.exports = {
     title: `Xomacs`,
     description: `Leading the Digital Revolution`,
     author: `@aishakhan0925`,
-    siteUrl: `https://xomacs.com`,
+    siteUrl: `https://dev.xomacs.com`,
   },
   plugins: [
     {

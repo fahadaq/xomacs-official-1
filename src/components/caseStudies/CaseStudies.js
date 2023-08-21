@@ -1,61 +1,75 @@
 import React from "react"
 
-const CaseStudies = ({ caseStudiesData }) => {
-  const ImagesCard = () => 
-      {caseStudiesData.caseStudiesImagesRepeater.map((v, i) => {
-        <div key={i}>
-          <img
-            src={v.caseStudiesImage.sourceUrl}
-            alt={v.caseStudiesImage.textAlt}
-          />
-        </div>
-      })}
+const CaseStudies = ({ caseStudiesData, ClrStandard }) => {
+  const StdClr = ClrStandard.map(clr => clr.colors)
+  const clr0th = StdClr[0].toString()
+  const clr1st = StdClr[1].toString()
+  const clr2nd = StdClr[2].toString()
+
+  const rootStyle = {
+    "--clr0th": clr0th,
+    "--clr1st": clr1st,
+    "--clr2nd": clr2nd,
+  }
+
+  const ImagesCard = () => {
+    return (
+      // <div className="grid grid-cols-3 absolute top-0 left-0 right-0 bottom-0 m-auto">
+      <div className="flex flex-wrap -mx-2 p-10">
+        {caseStudiesData.caseStudiesImagesRepeater.map((v, i) => (
+          // <div key={i} className="flex items-start justify-center w-full p-2">
+          <div key={i} className="w-1/3 px-2">
+            <div className="flex flex-col items-center relative">
+              <img
+                src={v.caseStudiesImage.sourceUrl}
+                alt={v.caseStudiesImage.textAlt}
+                className="w-full h-auto"
+              />
+              <div className="text-center absolute inset-0 flex flex-col justify-center items-center text-white px-20">
+                <h1 className="font-bold text-2xl">
+                  {v.caseStudiesImageTitle}
+                </h1>
+                <p className="my-5">{v.caseStudiesImageDescription}</p>
+                {v.caseStudiesImageButton && (
+                  <button
+                    style={rootStyle}
+                    className="bgClr w-[38%] md:w-[60%] p-2 rounded-full mt-6 text-white font-bold"
+                  >
+                    {v.caseStudiesImageButton}
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  const TabBar = () => {
+    return 
+    caseStudiesData.caseStudiesNavRepeater[0].caseStudiesNavbar.map((tab, idx)=><>
+    <button>{tab.caseStudiesTitle}</button>
+    </>)}
 
   return (
     <div
-      className="bg-cover bg-no-repeat overflow-hidden"
-      style={{
-        backgroundImage: `url('${caseStudiesData.caseStudiesBgImage.sourceUrl}')`,
-        zIndex:1
-      }}
-    >
-      <ImagesCard />
-      <div className="container mx-auto flex flex-col h-screen">
-        <div className="md:flex-row-reverse md:p-10 flex sm:flex-col-reverse sm:pt-[150px]">
-          {/* <img
-            className="md:h-[780px] md:w-[700px] md:me-10 w-full h-auto"
-            src={caseStudiesData.caseStudiesBgImage.sourceUrl}
-            alt={caseStudiesData.caseStudiesBgImage.altText}
-          /> */}
-          <div className="flex flex-col m-auto md:mx-50 md:mb-10">
-            <h1 className="text-green-500 uppercase font-bold text-xl md:text-2xl">
-              {/* {homeData.homeTitle} */}
-            </h1>
-            <h1 className="text-white text-4xl md:text-7xl capital w-full leading-tight font-semibold">
-              {/* {homeData.homeTitle2.slice(
-                0,
-                homeData.homeTitle2.indexOf("product")
-              )} */}
-              <span className="text-orange-300">
-                {/* {homeData.homeTitle2.slice(
-                  homeData.homeTitle2.indexOf("product"),
-                  homeData.homeTitle2.indexOf("product") + 8
-                )} */}
-              </span>
-              {/* {homeData.homeTitle2.slice(
-                homeData.homeTitle2.indexOf("product") + 8
-              )} */}
-            </h1>
-            <button
-              //   style={rootStyle}
-              className="bgClr w-[38%] md:w-[40%] p-2 rounded-full mt-6 text-white font-bold "
-            >
-              {/* {homeData.consultationButton} */}
-            </button>
-          </div>
-        </div>
+    className="bg-cover bg-no-repeat h-[1100px] overflow-hidden relative flex justify-center flex-col"
+    style={{
+      backgroundImage: `url('${caseStudiesData.caseStudiesBgImage.sourceUrl}')`,
+    }}
+     >
+      <h1 className="text-teal-500 font-bold uppercase my-5 text-center tracking-widest">{caseStudiesData.caseStudiesTitle}</h1>
+      <h1 className="text-white text-5xl font-bold mb-5 -mt-5 text-center">{caseStudiesData.caseStudiesTitle2}</h1>
+      <div
+        className="bg-cover bg-no-repeat h-[1100px] overflow-hidden relative flex justify-center flex-col"
+        style={{
+          backgroundImage: `url('${caseStudiesData.caseStudiesBgImage.sourceUrl}')`,
+        }}
+      >
+        <TabBar/>
+        <ImagesCard />
       </div>
-
     </div>
   )
 }
