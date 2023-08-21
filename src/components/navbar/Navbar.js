@@ -57,9 +57,7 @@ const Navbar = ({ ClrStandard, NavbarData }) => {
         />
 
         {/* Menu Buttons */}
-        {/* <div className={`md:flex md:flex-col ${menuOpen ? 'flex d-flex absolute right-0 bg-orange-300' : 'hidden'}`}> */}
         <div className={`md:flex ${menuOpen ? 'fixed top-20 right-0 flex d-flex flex-col items-center text-center' : 'hidden'} flex d-flex md:flex-row justify-center`}>
-          {/* Vertical buttons */}
           {NavbarBtns}
 
           {/* "Let's talk" button */}
@@ -80,13 +78,7 @@ const Navbar = ({ ClrStandard, NavbarData }) => {
           className="md:hidden text-white"
           onClick={toggleMenu}
         >
-          {/* {menuOpen ? 'X' : 'Menu'} */}
-          {/* {menuOpen ? 'X' : <FaLayoutNavbar/>}  */}
-          {/* {menuOpen ? 'X' : <FaHome/>}  */}
-          {/* {menuOpen ? 'X' : <FaBars/>}  */}
           {menuOpen ? <FaXbox/> : <FaBars/>} 
-          {/* {menuOpen ? <HiOutlineBarsArrowUp /> : <HiOutlineBarsArrowDown />}  */}
-          
         </button>
       </div>
     </div>

@@ -33,7 +33,7 @@ const Home = ({ homeData, ClrStandard }) => {
             {/* <img className='absolute -top-[100px] right-[180px] h-[780px]' src={homeData.homeImage.sourceUrl} alt={homeData.homeImage.altText} /> */}
             <div className='flex flex-row-reverse'>
                     <img className='h-[580px] w-[500px] me-60' src={homeData.homeImage.sourceUrl} alt={homeData.homeImage.altText} />
-                <div className='flex flex-col m-auto mx-10'>
+                <div className='flex flex-col m-auto mx-20'>
                     <h1 className='text-green-500 uppercase font-bold '>{homeData.homeTitle}</h1>
                     <h1 className='text-white text-[60px] capital w-[100%] leading-[1] font-[600]'>
                         {homeData.homeTitle2.slice(0, homeData.homeTitle2.indexOf('product'))}
