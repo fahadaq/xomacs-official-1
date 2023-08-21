@@ -13,6 +13,7 @@ module.exports = {
     description: `Leading the Digital Revolution`,
     author: `@aishakhan0925`,
     siteUrl: `https://dev.xomacs.com`,
+    // siteUrl: `https://xomacs.com`,
   },
   plugins: [
     {
