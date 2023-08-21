@@ -1,0 +1,10 @@
+
+/* src/styles/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    overflow-x: hidden !important;
+    scroll-behavior: smooth;
+  }
